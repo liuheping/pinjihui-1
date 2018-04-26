@@ -1,8 +1,13 @@
 type User {
     id: ID!
+    name: String
+    mobie: String
     email: String
-    password: String
-    ipAddress: String
     createdAt: Time
-    roles: [Role]
+    lastLoginTime: Time
+    lastIp: String
+    addresses: [Address]
+    orders: OrdersConnection
+    cart: [ProductInCart]
+    favorites: [Favorite]
 }

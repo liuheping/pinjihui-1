@@ -1,0 +1,7 @@
+type ProductInCart {
+    id: ID!
+    product: Product!
+    user: User
+    productCount: Int!
+    merchant: Merchant!
+}

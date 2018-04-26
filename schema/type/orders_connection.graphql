@@ -1,0 +1,5 @@
+type OrdersConnection {
+    totalCount: Int!
+    edges: [OrdersEdge]
+    pageInfo: PageInfo!
+}

@@ -1,0 +1,5 @@
+type Stock {
+    productId: ID!
+    merchantId: ID!
+    stock: Int!
+}

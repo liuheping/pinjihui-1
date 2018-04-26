@@ -1,0 +1,7 @@
+type Address {
+    proviceId: Int
+    cityId: Int
+    areaId: Int
+    regionName: String
+    address: String
+}

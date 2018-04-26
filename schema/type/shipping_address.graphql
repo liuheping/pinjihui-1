@@ -1,0 +1,8 @@
+type ShippingAddress {
+    id: ID!
+    mobie: String!
+    consignee: String!
+    address: Address!
+    zipcode: String
+    isDefault: Boolean
+}

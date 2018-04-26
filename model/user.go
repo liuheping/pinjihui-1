@@ -8,10 +8,12 @@ import (
 type User struct {
 	ID        string
 	Email     string
+	Name     string
 	Password  string
 	IPAddress string `db:"ip_address"`
 	CreatedAt string `db:"created_at"`
 	Roles     []*Role
+	Mobile string
 }
 
 func (user *User) HashedPassword() error {

@@ -1,0 +1,6 @@
+type Brand {
+    id: ID!
+    name: String
+    thumbnaim: String
+    description: String
+}

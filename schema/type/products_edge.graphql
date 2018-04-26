@@ -1,0 +1,4 @@
+type ProductsEdge {
+    cursor: ID!
+    node: Product
+}

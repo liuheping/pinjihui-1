@@ -1,0 +1,4 @@
+type CommentsEdge {
+    cursor: ID!
+    node: Comment
+}

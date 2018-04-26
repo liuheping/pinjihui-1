@@ -1,0 +1,9 @@
+type ProductInOrder {
+    id: ID!
+    order: Order!
+    product: Product!
+    name: String!
+    productCount: Int!
+    price: Float!
+    image: String
+}

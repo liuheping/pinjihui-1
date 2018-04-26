@@ -17,18 +17,22 @@ func (r *userResolver) ID() graphql.ID {
 	return graphql.ID(r.u.ID)
 }
 
+func (r *userResolver) Name() *string {
+	return &r.u.Name
+}
+
+func (r *userResolver) Mobile() *string {
+	return &r.u.Mobile
+}
+
 func (r *userResolver) Email() *string {
 	return &r.u.Email
 }
 
-func (r *userResolver) Password() *string {
-	maskedPassword := "********"
-	return &maskedPassword
-}
-
-func (r *userResolver) IPAddress() *string {
-	return &r.u.IPAddress
-}
+//func (r *userResolver) Password() *string {
+//	maskedPassword := "********"
+//	return &maskedPassword
+//}
 
 func (r *userResolver) CreatedAt() (*graphql.Time, error) {
 	if r.u.CreatedAt == "" {
@@ -37,6 +41,23 @@ func (r *userResolver) CreatedAt() (*graphql.Time, error) {
 
 	t, err := time.Parse(time.RFC3339, r.u.CreatedAt)
 	return &graphql.Time{Time: t}, err
+}
+
+func (r *userResolver) LastLoginTime() (*graphql.Time, error) {
+	//if r.u.CreatedAt == "" {
+		return nil, nil
+	//}
+
+	//t, err := time.Parse(time.RFC3339, r.u.CreatedAt)
+	//return &graphql.Time{Time: t}, err
+}
+
+func (r *userResolver) LastIp() (string) {
+	return "127.0.0.1"
+}
+
+func (r *userResolver) Addresses() (string) {
+	return "127.0.0.1"
 }
 
 func (r *userResolver) Roles(ctx context.Context) *[]*roleResolver {

@@ -1,0 +1,49 @@
+type Order {
+    id: ID!
+    user: User!
+    orderStatus: OrderStatus
+    shippingStatus: ShippingStatus
+    payStatus: PayStatus
+    childrenOrders: [Order]
+#    address: OrderAddress
+    merchant: Merchant
+    products: [ProductInOrder]
+    shippingName: String!
+    payName: String!
+    howOos: HowOos
+    amount: Float!
+    shippingFee: Float
+    moneyPaid: Float!
+    orderAmount: Float!
+    createdAt: Time!
+    confirmTime: Time
+    payTime: Time
+    shippingTime: Time
+}
+
+enum OrderStatus {
+    unconfirmed
+    confirmed
+    cancelled
+    invalid
+    returned
+}
+
+enum ShippingStatus {
+    unshipped
+    shipped
+    invalid
+    returned
+}
+
+enum PayStatus {
+    unpaid
+    paying
+    paid
+}
+
+enum HowOos {
+    together
+    cancel
+    consult
+}

@@ -1,0 +1,10 @@
+type Comment {
+    id: ID!
+    user: User
+    product: Product
+    rank: Int
+    order: Order
+    content: String
+    createdAt: Time
+    reply: Comment
+}

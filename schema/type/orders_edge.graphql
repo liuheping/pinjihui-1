@@ -1,0 +1,4 @@
+type OrdersEdge {
+    cursor: ID!
+    node: Order
+}

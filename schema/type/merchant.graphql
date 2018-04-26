@@ -1,0 +1,7 @@
+type Merchant {
+    id: ID!
+    companyName: String
+    companyAddress: String
+    deliveryAddress: String
+    companyImage: String
+}
