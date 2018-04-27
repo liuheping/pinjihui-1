@@ -1,0 +1,7 @@
+type Payment {
+    id: ID!
+    payName: String!
+    payCode: String!
+    payDesc: String
+    isOnline: Boolean!
+}

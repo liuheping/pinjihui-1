@@ -5,7 +5,7 @@ type Order {
     shippingStatus: ShippingStatus
     payStatus: PayStatus
     childrenOrders: [Order]
-#    address: OrderAddress
+    address: OrderAddress
     merchant: Merchant
     products: [ProductInOrder]
     shippingName: String!

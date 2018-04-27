@@ -3,7 +3,7 @@ type Product {
     name: String
     price: Float
     category: Category
-    relatedIds: [ID]
+    relatedProducts: [Product]
     content: String
     brand: Brand
     createdAt: Time
