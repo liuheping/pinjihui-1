@@ -10,7 +10,7 @@ type User struct {
 	Email     string
 	Name     string
 	Password  string
-	IPAddress string `db:"ip_address"`
+	LastIp string `db:"last_ip"`
 	CreatedAt string `db:"created_at"`
 	Roles     []*Role
 	Mobile string

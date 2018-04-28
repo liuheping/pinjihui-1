@@ -1,12 +1,12 @@
 type User {
     id: ID!
     name: String
-    mobie: String
+    mobile: String!
     email: String
     createdAt: Time
     lastLoginTime: Time
     lastIp: String
-    addresses: [Address]
+    addresses: [ShippingAddress]
     orders: OrdersConnection
     cart: [ProductInCart]
     favorites: [Favorite]

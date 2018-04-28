@@ -14,7 +14,7 @@ func (r *Resolver) CreateUser(ctx context.Context, args *struct {
 	user := &model.User{
 		Email:     args.Email,
 		Password:  args.Password,
-		IPAddress: *ctx.Value("requester_ip").(*string),
+		LastIp: *ctx.Value("requester_ip").(*string),
 	}
 
 	user, err := ctx.Value("userRepository").(*repository.UserRepository).CreateUser(user)

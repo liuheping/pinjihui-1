@@ -21,8 +21,8 @@ func (r *userResolver) Name() *string {
 	return &r.u.Name
 }
 
-func (r *userResolver) Mobile() *string {
-	return &r.u.Mobile
+func (r *userResolver) Mobile() string {
+	return r.u.Mobile
 }
 
 func (r *userResolver) Email() *string {
@@ -52,12 +52,17 @@ func (r *userResolver) LastLoginTime() (*graphql.Time, error) {
 	//return &graphql.Time{Time: t}, err
 }
 
-func (r *userResolver) LastIp() (string) {
-	return "127.0.0.1"
+func (r *userResolver) LastIp() (*string) {
+	return &r.u.LastIp
 }
 
-func (r *userResolver) Addresses() (string) {
-	return "127.0.0.1"
+type ShippingAddressResolver struct {
+
+}
+
+func (r *userResolver) Addresses() (*[]*ShippingAddressResolver) {
+	addrs := make([]*ShippingAddressResolver, 5)
+	return &addrs
 }
 
 func (r *userResolver) Roles(ctx context.Context) *[]*roleResolver {
