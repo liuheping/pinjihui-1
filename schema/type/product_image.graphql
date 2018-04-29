@@ -1,6 +1,6 @@
 type ProductImage {
     id: ID!
-    samllImage: String
-    mediumImage: String
-    bigImage: String
+    samllImage: String!
+    mediumImage: String!
+    bigImage: String!
 }

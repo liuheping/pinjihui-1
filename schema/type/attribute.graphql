@@ -1,4 +1,4 @@
 type Attribute {
-    name: String
+    name: String!
     value: String
 }

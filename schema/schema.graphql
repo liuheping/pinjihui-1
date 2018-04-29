@@ -2,11 +2,15 @@ schema {
     query: Query
     mutation: Mutation
 }
+
+# 查询 root
 type Query {
+    # 获取当前用户信息
     me: User
-#    products(key: String): ProductsConnection!
-#    orders(key: String): OrdersConnection!
-#    merchant(id: ID!): Merchant
+    # 产品列表接口
+    products(key: String): ProductsConnection!
+    # 商家接口
+    merchant(id: ID!): Merchant
 }
 type Mutation {
     createUser(email: String!, password: String!): User

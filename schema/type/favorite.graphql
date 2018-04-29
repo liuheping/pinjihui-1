@@ -1,12 +1,7 @@
 type Favorite {
     id: ID!
-    user: User
-    obj(type: FavoriteType!): FavoriteObject
+    user: User!
+    obj: FavoriteObject!
 }
 
 union FavoriteObject = Product | Merchant
-
-enum FavoriteType {
-    product
-    store
-}

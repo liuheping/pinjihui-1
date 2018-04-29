@@ -1,17 +1,17 @@
 type Product {
     id: ID!
-    name: String
-    price: Float
-    category: Category
-    relatedProducts: [Product]
+    name: String!
+    price: Float!
+    category: Category!
+    relatedProducts: [Product!]
     content: String
     brand: Brand
-    createdAt: Time
-    updatedAt: Time
-    tags: [String]
-    productImages: [ProductImage]
-    merchants: [Merchant]
-    stock: [Stock]
-    attrs: [Attribute]
-    comments: CommentsConnection
+    createdAt: Time!
+    updatedAt: Time!
+    tags: [String!]
+    productImages: [ProductImage!]
+    merchants: [Merchant!]
+    stock: [Stock!]
+    attrs: [Attribute!]
+    comments: CommentsConnection!
 }

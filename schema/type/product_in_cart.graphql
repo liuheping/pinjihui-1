@@ -1,7 +1,7 @@
 type ProductInCart {
     id: ID!
     product: Product!
-    user: User
+    user: User!
     productCount: Int!
     merchant: Merchant!
 }

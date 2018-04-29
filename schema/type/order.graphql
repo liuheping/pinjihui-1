@@ -1,18 +1,18 @@
 type Order {
     id: ID!
     user: User!
-    orderStatus: OrderStatus
-    shippingStatus: ShippingStatus
-    payStatus: PayStatus
-    childrenOrders: [Order]
-    address: OrderAddress
-    merchant: Merchant
-    products: [ProductInOrder]
+    orderStatus: OrderStatus!
+    shippingStatus: ShippingStatus!
+    payStatus: PayStatus!
+    childrenOrders: [Order!]
+    address: OrderAddress!
+    merchant: Merchant!
+    products: [ProductInOrder!]
     shippingName: String!
     payName: String!
     howOos: HowOos
     amount: Float!
-    shippingFee: Float
+    shippingFee: Float!
     moneyPaid: Float!
     orderAmount: Float!
     createdAt: Time!

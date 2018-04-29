@@ -1,5 +1,5 @@
 type Address {
-    proviceId: Int!
+    provinceId: Int!
     cityId: Int!
     areaId: Int!
     regionName: String

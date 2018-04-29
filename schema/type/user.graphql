@@ -1,13 +1,14 @@
+# 用户数据结构
 type User {
     id: ID!
     name: String
     mobile: String!
     email: String
-    createdAt: Time
+    createdAt: Time!
     lastLoginTime: Time
     lastIp: String
-    addresses: [ShippingAddress]
-    orders: OrdersConnection
-    cart: [ProductInCart]
-    favorites: [Favorite]
+    addresses: [ShippingAddress!]
+    orders: OrdersConnection!
+    cart: [ProductInCart!]
+    favorites: [Favorite!]
 }
