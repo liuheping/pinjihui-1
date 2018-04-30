@@ -7,10 +7,12 @@ schema {
 type Query {
     # 获取当前用户信息
     me: User
-    # 产品列表接口
-    products(key: String): ProductsConnection!
-    # 商家接口
+    # 分页的产品列表接口
+    products(first: Int, after: String): ProductsConnection!
+    # 根据id获取商家信息
     merchant(id: ID!): Merchant
+    # 获取前n个品牌
+    brands(first: Int): [Brand]
 }
 type Mutation {
     createUser(email: String!, password: String!): User
