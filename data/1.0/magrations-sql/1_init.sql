@@ -160,7 +160,8 @@ create table products
   created_at       timestamp default CURRENT_TIMESTAMP not null,
   updated_at       timestamp default CURRENT_TIMESTAMP not null,
   tags             character varying [],
-  attrs            jsonb
+  attrs            jsonb,
+  recommended      boolean default false               not null
 );
 
 comment on table products

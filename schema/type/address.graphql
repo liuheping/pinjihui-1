@@ -1,5 +1,7 @@
 type Address {
+    # 省份ID
     provinceId: Int!
+    # 城市ID
     cityId: Int!
     areaId: Int!
     regionName: String

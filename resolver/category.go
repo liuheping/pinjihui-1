@@ -24,3 +24,12 @@ func (r *categoryResolver) ParentId() *graphql.ID {
     res := graphql.ID("xjauwkahsi92h1j")
     return &res
 }
+
+func (r *categoryResolver) Children() *[]*categoryResolver {
+    res := make([]*categoryResolver, 3)
+    for i := range res {
+        v := categoryResolver{}
+        res[i] = &v
+    }
+    return &res
+}

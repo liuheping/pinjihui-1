@@ -33,6 +33,10 @@ func (r *productResolver) Category() *categoryResolver {
 
 func (r *productResolver) RelatedProducts() *[]*productResolver {
     res := make([]*productResolver, 3)
+    for i := range res {
+        v := productResolver{}
+        res[i] = &v
+    }
     return &res
 }
 
@@ -58,26 +62,46 @@ func (r *productResolver) UpdatedAt() (graphql.Time, error) {
 
 func (r *productResolver) Tags() *[]string {
     res := make([]string, 3)
+    for i := range res {
+        v := "test string"
+        res[i] = v
+    }
     return &res
 }
 
 func (r *productResolver) ProductImages() *[]*productImageResolver {
     res := make([]*productImageResolver, 3)
+    for i := range res {
+        v := productImageResolver{}
+        res[i] = &v
+    }
     return &res
 }
 
 func (r *productResolver) Merchants() *[]*merchantResolver {
     res := make([]*merchantResolver, 3)
+    for i := range res {
+        v := merchantResolver{}
+        res[i] = &v
+    }
     return &res
 }
 
 func (r *productResolver) Stock() *[]*stockResolver {
     res := make([]*stockResolver, 3)
+    for i := range res {
+        v := stockResolver{}
+        res[i] = &v
+    }
     return &res
 }
 
 func (r *productResolver) Attrs() *[]*attributeResolver {
     res := make([]*attributeResolver, 3)
+    for i := range res {
+        v := attributeResolver{}
+        res[i] = &v
+    }
     return &res
 }
 

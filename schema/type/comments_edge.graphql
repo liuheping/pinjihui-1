@@ -1,4 +1,5 @@
 type CommentsEdge {
     cursor: ID!
+    # 随便注释
     node: Comment
 }

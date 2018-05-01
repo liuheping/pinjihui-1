@@ -16,6 +16,10 @@ func (r *ordersConnectionResolver) TotalCount() int32 {
 
 func (r *ordersConnectionResolver) Edges() *[]*ordersEdgeResolver {
     res := make([]*ordersEdgeResolver, 3)
+    for i := range res {
+        v := ordersEdgeResolver{}
+        res[i] = &v
+    }
     return &res
 }
 

@@ -16,16 +16,16 @@ func (r *productImageResolver) ID() graphql.ID {
 }
 
 func (r *productImageResolver) SamllImage() string {
-    res := "test string"
+    res := "https://img10.360buyimg.com/mobilecms/s500x500_jfs/t13828/23/991435575/195172/ebf643d9/5a17dc63N9f1003de.jpg"
     return res
 }
 
 func (r *productImageResolver) MediumImage() string {
-    res := "test string"
+    res := "https://img10.360buyimg.com/mobilecms/s500x500_jfs/t13828/23/991435575/195172/ebf643d9/5a17dc63N9f1003de.jpg"
     return res
 }
 
 func (r *productImageResolver) BigImage() string {
-    res := "test string"
+    res := "https://img10.360buyimg.com/mobilecms/s500x500_jfs/t13828/23/991435575/195172/ebf643d9/5a17dc63N9f1003de.jpg"
     return res
 }

@@ -16,6 +16,10 @@ func (r *productsConnectionResolver) TotalCount() int32 {
 
 func (r *productsConnectionResolver) Edges() *[]*productsEdgeResolver {
     res := make([]*productsEdgeResolver, 3)
+    for i := range res {
+        v := productsEdgeResolver{}
+        res[i] = &v
+    }
     return &res
 }
 

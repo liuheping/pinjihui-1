@@ -2,4 +2,6 @@ type Category {
     id: ID!
     name: String!
     parentId: ID
+    # 子分类列表
+    children: [Category!]
 }

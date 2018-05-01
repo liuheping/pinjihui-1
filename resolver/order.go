@@ -22,7 +22,7 @@ func (r *orderResolver) User() *userResolver {
 }
 
 func (r *orderResolver) OrderStatus() string {
-    res := "invalid"
+    res := "returned"
     return res
 }
 
@@ -38,6 +38,10 @@ func (r *orderResolver) PayStatus() string {
 
 func (r *orderResolver) ChildrenOrders() *[]*orderResolver {
     res := make([]*orderResolver, 3)
+    for i := range res {
+        v := orderResolver{}
+        res[i] = &v
+    }
     return &res
 }
 
@@ -53,6 +57,10 @@ func (r *orderResolver) Merchant() *merchantResolver {
 
 func (r *orderResolver) Products() *[]*productInOrderResolver {
     res := make([]*productInOrderResolver, 3)
+    for i := range res {
+        v := productInOrderResolver{}
+        res[i] = &v
+    }
     return &res
 }
 

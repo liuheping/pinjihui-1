@@ -28,9 +28,16 @@ fieldPattern = re.compile(r'(\w+?): (\w+|\[(\w+)(!)?\])(!)?')
 enumPattern = re.compile(r'enum (\w+) \{([^\}]+)\}')
 basicTypeMap = {"Int": "int32", "Float": 'float64', "String": "string", "Boolean": "bool"}
 
-def initValue(typeName):
-    typeMapValue = {"Int": "int32(3)", "Float": "0.0", "String": '"test string"', "Boolean": "false"}
-    return typeMapValue[typeName]
+def initValue(typeName, enumType = None,enumsMap = None):
+    typeMapValue = {"int32": "int32(3)", 
+    "float64": "0.0", 
+    "string": '"test string"', 
+    "bool": "false",
+    "enum": '"%s"' % enumsMap[enumType][0] if enumType != None else "",
+    "graphql.ID": 'graphql.ID("xjauwkahsi92h1j")',
+    "graphql.Time, error": 'time.Parse(time.RFC3339, "2018-04-01 12:04:56.539453")'
+    }
+    return typeMapValue[typeName] if typeName in typeMapValue else "%s{}" % (typeName)
 
 def hump2underline(hunp_str):
     '''
@@ -51,6 +58,7 @@ def generate(file):
 
     with open(file, 'r') as f:
         data = f.read()
+        data = re.sub(r'\s+?#.*$', "", data, 0, re.M)
         res = re.match(pattern, data)
         if res == None:
             return -1
@@ -63,8 +71,9 @@ def generate(file):
         enumsMap = {e[0]:e[1].strip().split("\n    ") for e in enumsTypes}
         print("enums:", enumsMap)
 
+        print(res.group(2).split("\n"))
         fields = [re.match(fieldPattern, x.strip()).groups() for x in res.group(2).split("\n")]
-        print(fields)
+        # print(fields)
         shouldImportTime = False
         should_import_graphql_go = False
         for field in fields:
@@ -74,14 +83,13 @@ def generate(file):
             if gqlFieldType.startswith("["):
                 gqlFieldType = field[2]
                 isArray = True
-
+            value = None
             if gqlFieldType in ["Int", "String", "Boolean", "Float"]:
-                value = initValue(gqlFieldType)
                 goFieldType = basicTypeMap[gqlFieldType]
             elif gqlFieldType in enums:
                 goFieldType = "string"
                 random.shuffle(enumsMap[gqlFieldType])
-                value = '"' + enumsMap[gqlFieldType][0] + '"'
+                value = initValue('enum', gqlFieldType, enumsMap)
             elif gqlFieldType == "ID":
                 goFieldType = "graphql.ID"
                 value = 'graphql.ID("xjauwkahsi92h1j")'
@@ -90,16 +98,23 @@ def generate(file):
                 shouldImportTime = True
                 should_import_graphql_go = True
                 goFieldType = "graphql.Time, error"
-                value = 'time.Parse(time.RFC3339, "2018-04-01 12:04:56.539453")'
             else:
                 goFieldType = first_lower(gqlFieldType) + "Resolver"
-                value = goFieldType + "{}"
+
+            if value == None:
+                value = initValue(goFieldType)
 
             if isArray:
+                refSybol = ""
                 if shouldReturnPoint(field[3], goFieldType):
+                    refSybol = "&" 
                     goFieldType = "*" + goFieldType
                 goFieldType = "[]" + goFieldType
-                value = "make("+goFieldType+", 3)"
+                value = "make(%s, 3)" % goFieldType + """
+    for i := range res {
+        v := %s
+        res[i] = %sv
+    }""" % (value, refSybol)
 
             if shouldReturnPoint(field[4], goFieldType):
                 goFieldType = "*" + goFieldType
@@ -130,7 +145,7 @@ def generate(file):
         tmpl = tmpl.replace("{$import}", first_lower(importTmpl))
         tmpl = tmpl.replace("{$typeName}", first_lower(typeName))
 
-        resolverFile = "../resolver/" + hump2underline(typeName) + ".go"
+        resolverFile = "/home/wangbo/go/src/pinjihui.com/pinjihui/resolver/" + hump2underline(typeName) + ".go"
         with open(resolverFile, 'w') as rf:
             rf.write(tmpl)
 
@@ -138,8 +153,9 @@ def generate(file):
 
 if __name__ == '__main__':
 
-    dirname = "../schema/type"
+    dirname = "/home/wangbo/go/src/pinjihui.com/pinjihui/schema/type"
     typeFiles = [os.path.join(dirname, name) for name in os.listdir(dirname) 
-                if name.endswith(".graphql") and not name.startswith("user")]
+                if name.endswith(".graphql") and not name.startswith("user") and not name == "page_info.graphql"]
     for file in typeFiles:
+        print("generate %s" % file)
         generate(file)
